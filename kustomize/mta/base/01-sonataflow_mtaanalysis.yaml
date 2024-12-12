@@ -117,7 +117,7 @@ spec:
             tasks:
             - application:
                 id: .application.id
-              name: parodos.windup
+              name: rhdhorchestrator.windup
           invoke: sync
           refName: createTaskgroup
         name: createTaskgroup

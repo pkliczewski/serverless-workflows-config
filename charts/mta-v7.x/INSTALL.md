@@ -6,12 +6,12 @@ At the end of a successful assessment workflow, a link to the report will be ava
 **Note**: The *MTA* workflow type functions as an assessment tool, evaluating the provided code repository and suggesting the next workflow to execute for that repository. Currently, there is a correlation between the *MTA* and *Move2Kube* workflow, where *Move2Kube* is recommended by the *MTA*. Consequently, it is necessary to install both to leverage their benefits fully.
 
 ## Configuration
-View the [MTA v7.X README on GitHub](https://github.com/parodos-dev/serverless-workflows-config/blob/main/charts/mta-v7.x/README.md)
+View the [MTA v7.X README on GitHub](https://github.com/rhdhorchestrator/serverless-workflows-config/blob/main/charts/mta-v7.x/README.md)
 
 ## Installation
-- Run 
+- Run
 ```console
-helm repo add orchestrator-workflows https://parodos.dev/serverless-workflows-config
+helm repo add orchestrator-workflows https://rhdhorchestrator/serverless-workflows-config
 helm install mta orchestrator-workflows/mta-v7 -n sonataflow-infra
 ```
 
@@ -30,7 +30,7 @@ oc -n sonataflow-infra patch secret "${WORKFLOW_NAME}-creds" --type merge -p '{"
 
 This secret is used in the `sonataflow` CR to inject the token as an environment variable that will be used by the workflow.
 
-Once the secret is updated, to have it applied, the pod shall be restarted. 
+Once the secret is updated, to have it applied, the pod shall be restarted.
 Note that the modification of the secret does not currently restart the pod, the action shall be performed manually or, if you are following the next section, any change to the sonataflow CR will restart the pod.
 
 Note that if you run the `helm upgrade` command, the values of the secret are reseted.

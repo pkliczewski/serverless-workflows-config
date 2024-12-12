@@ -33,7 +33,7 @@ spec:
   broker: ticket-events
   filter:
     attributes:
-      type: dev.parodos.escalation
+      type: io.rhdhorchestrator.escalation
   subscriber:
     ref:
       apiVersion: v1

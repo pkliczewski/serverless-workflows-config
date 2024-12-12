@@ -28,7 +28,7 @@ spec:
         kind: consumed
         name: approvalEvent
         source: ticket.listener
-        type: dev.parodos.escalation
+        type: io.rhdhorchestrator.escalation
     functions:
       - name: createNotification
         operation: notifications#createNotification

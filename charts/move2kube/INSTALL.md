@@ -1,11 +1,11 @@
 # Move2kube Workflow
 
 ## Configuration
-The list of the overridable values can be found in our [git repository](https://github.com/parodos-dev/serverless-workflows-config/blob/main/charts/move2kube/values.yaml)
+The list of the overridable values can be found in our [git repository](https://github.com/rhdhorchestrator/serverless-workflows-config/blob/main/charts/move2kube/values.yaml)
 
-You can also view the [Move2Kube README on GitHub](https://github.com/parodos-dev/serverless-workflows-config/blob/main/charts/move2kube/README.md)
+You can also view the [Move2Kube README on GitHub](https://github.com/rhdhorchestrator/serverless-workflows-config/blob/main/charts/move2kube/README.md)
 
-## Prerequisites 
+## Prerequisites
 Set `TARGET_NS` to the target namespace:
 ```console
 TARGET_NS=sonataflow-infra
@@ -39,17 +39,17 @@ If you change the name of the secret, you will also have to provide the value of
 
 If you want to use other ssh keys you should update the `from-file` parameter values to match your own.
 
-If you do not have ssh keys, you can generate them with `ssh-keygen` command. You can for instance refer to https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent 
+If you do not have ssh keys, you can generate them with `ssh-keygen` command. You can for instance refer to https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
 Note that those ssh keys need to be added to your git repository as well. For bitbucket, it should be on the [account level](https://bitbucket.org/account/settings/ssh-keys/)
 
-View the [Move2Kube README](https://github.com/parodos-dev/serverless-workflows-config/blob/main/charts/move2kube/README.md) on GitHub.
+View the [Move2Kube README](https://github.com/rhdhorchestrator/serverless-workflows-config/blob/main/charts/move2kube/README.md) on GitHub.
 
 ## Installation
 
-Run 
+Run
 ```console
-helm repo add orchestrator-workflows https://parodos.dev/serverless-workflows-config
+helm repo add orchestrator-workflows https://rhdhorchestrator.io/serverless-workflows-config
 helm install move2kube orchestrator-workflows/move2kube -n ${TARGET_NS} --set instance.namespace=${M2K_INSTANCE_NS}
 ```
 
@@ -88,7 +88,7 @@ oc -n ${TARGET_NS} patch secret "${WORKFLOW_NAME}-creds" --type merge -p '{"data
 
 This secret is used in the `sonataflow` CR to inject the token as an environment variable that will be used by the workflow.
 
-Once the secret is updated, to have it applied, the pod shall be restarted. 
+Once the secret is updated, to have it applied, the pod shall be restarted.
 Note that the modification of the secret does not currently restart the pod, the action shall be performed manually or, if you are following the next section, any change to the sonataflow CR will restart the pod.
 
 Note that when you run the `helm upgrade` command, the values of the secret are reseted.

@@ -11,13 +11,13 @@ TARGET_NS=sonataflow-infra
 ## Persistence pre-requisites
 If persistence is enbaled, you must have a PostgreSQL instance running in the cluster, in the same `namespace` as the workflows.
 
-A `secret` containing the instance credentials must exists as well. 
+A `secret` containing the instance credentials must exists as well.
 
-See https://www.parodos.dev/orchestrator-helm-chart/postgresql on how to install a PostgreSQL instance. Please follow the section detailing how to install using helm. In this document, a `secret` holding the credentials is created.
+See https://www.rhdhorchestrator.io/orchestrator-helm-chart/postgresql on how to install a PostgreSQL instance. Please follow the section detailing how to install using helm. In this document, a `secret` holding the credentials is created.
 
 
-## Installing helm chart 
-From `charts` folder run 
+## Installing helm chart
+From `charts` folder run
 ```console
 helm install request-vm-cnv request-vm-cnv --namespace=${TARGET_NS}
 ```
@@ -89,13 +89,13 @@ oc -n sonataflow-infra patch secret "${WORKFLOW_NAME}-creds" --type merge -p '{
    }
 }'
 ```
-If you are using Jira cloud, you can generate the `JIRA_API_TOKEN` using https://id.atlassian.com/manage-profile/security/api-tokens 
+If you are using Jira cloud, you can generate the `JIRA_API_TOKEN` using https://id.atlassian.com/manage-profile/security/api-tokens
 
 The `OCP_API_SERVER_TOKEN` should be associated with a service account.
 
 The `OCP_API_SERVER_TOKEN` should be associated with a service account.
 
-Once the secret is updated, to have it applied, the pod shall be restarted. 
+Once the secret is updated, to have it applied, the pod shall be restarted.
 Note that the modification of the secret does not currently restart the pod, the action shall be performed manually or, if you are following the next section, any change to the sonataflow CR will restart the pod.
 
 Note that if you run the `helm upgrade` command, the values of the secret are reseted.
